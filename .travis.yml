@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+
+before_install:
+  - docker build -t mak1k1/docker-sandbox-frontend-app -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true mak1k1/docker-sandbox-frontend-app npm run test
